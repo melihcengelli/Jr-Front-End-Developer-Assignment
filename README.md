@@ -2,7 +2,7 @@
 
 #### **Requirements**
 
-##### 1
+##### 1 :white_check_mark:
 Query a public GraphQL API and show the results in a list. This functionality is already provided, but feel free to change the query as you see fit.
 
 ##### 2
