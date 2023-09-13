@@ -1,0 +1,527 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+}
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/font.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MyCustomFont2';
+  src: url('fonts/font2.otf') format('opentype');
+}
+
+
+
+$maincolor: rgba(255,32,72,1);
+$maincolor30: rgba(255,32,72,.3);
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10rem 1fr 10rem;
+  min-height: 100vh;
+  height: 100%;
+}
+
+@keyframes nav {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.Header {
+  display: flex;
+  z-index: 100;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(248,249,250,1);
+  border-bottom: .2rem solid $maincolor;
+  font-size: 1.6rem;
+  justify-content: space-between;
+  &-Nav {
+    display: flex;
+    flex-direction: row;
+    &-Item {
+      position: relative;
+      color: $maincolor;
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-right: 1.2rem;
+      cursor: pointer;
+      &:hover::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-bottom: .2rem solid $maincolor;
+        animation: nav .5s ease;
+      }
+    }
+  }
+  &Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    &One{
+      color :  rgba(0,0,0,1);
+      font-size: 3rem;
+      margin-left: 2rem;
+      font-family: 'MyCustomFont';
+
+      }
+    &Two {
+      color :  rgba(255,32,72,1);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-left: 1rem;
+    }
+  }
+
+}
+
+.Footer {
+  display: flex;
+  //background-color: rgba(255,32,72,1);
+  background-color: rgba(248,249,250,1);
+  font-family: 'MyCustomFont2';
+  border-top: .2rem solid $maincolor;
+  align-items: center;
+  justify-content: center;
+  color: $maincolor;
+  cursor: pointer;
+  & a {
+    font-size: 2rem;
+    color: $maincolor;
+    text-decoration: none;
+
+  }
+}
+
+.Main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.6rem;
+
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  background-color: rgba(248,249,250,.2);
+  font-size: 1.6rem;
+  &-title {
+    font-family: 'MyCustomFont2';
+    font-size: 3.2rem;
+    padding: 1rem;
+    background: linear-gradient(90deg, rgba(255,32,72,1) 0%, rgba(0,212,255,0) 100%);
+    color: white;
+    & h5 {
+      font-size: 3.2rem;
+      font-weight: 300;
+    }
+  }
+  &-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    background: linear-gradient(-90deg, rgba(255,32,72,1) 0%, rgba(255,255,255,1) 100%);
+
+  }
+  &-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    &-display {
+      display: flex;
+      height: fit-content;
+      flex-wrap: wrap;
+      margin: 1rem;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+    }
+    &-line {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 1rem;
+      align-items: center;
+      height: fit-content;
+      justify-content: center;
+      width: fit-content;
+      &-button {
+        height: 3rem !important;
+        font-size: 1.1rem !important;
+        font-weight: 300;
+        margin: 1rem !important;
+        background-color: $maincolor !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        &:hover {
+          background-color: rgba(248,249,250) !important;
+          color:$maincolor !important;
+        }
+      }
+      &-input {
+        display: flex;
+        height: 100% !important;
+      }
+    }
+  }
+  &-filter{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    animation: opacity .5s ease;
+    border-bottom: .2rem solid rgb(255,32,72);
+
+  }
+  &-display {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    margin-top: 2rem;
+    & table {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin: 1rem;
+    }
+    & th {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.6rem;
+      margin-right: 5rem;
+      padding: 2rem;
+      color: $maincolor;
+    }
+    & td {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 300;
+      padding: 1rem;
+    }
+    & tr {
+      margin: 1rem;
+    }
+    &-country {
+      animation: opacity .5s ease;
+      &-title {
+        font-size: 5rem;
+        font-family: 'MyCustomFont2';
+        font-weight: 600;
+        color: white;
+        padding: 1rem;
+        background: linear-gradient(90deg, rgba(255,32,72,1) 0%, rgba(0,212,255,0) 100%);
+      }
+      
+    }
+    &-line {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 1rem;
+      margin: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: opacity .5s ease;
+      & p {
+        font-size: 1.6rem;
+      }
+      &:hover {
+        background-color: $maincolor30;
+      }
+      &-info {
+        display: flex;
+        flex-direction: column;
+        &-contain {
+          display: flex;
+          flex-direction: row;
+        }
+        & h4 {
+          font-size: 1.5rem;
+          font-family: 'MyCustomFont';
+          font-weight: 700 !important;
+          color: black;
+          text-transform:capitalize;
+        }
+        &-line {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          & h5 {
+            font-size: 1.2rem;
+          }
+          & p {
+            font-size: 1.2rem;
+            margin-left: .5rem;
+            
+          }
+        }
+      }
+    }
+    &-lineselected {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 1rem;
+      margin: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: opacity .5s ease;
+      transform: translateY(-.2rem);
+      -webkit-box-shadow: 0px 7px 13px 0px rgba(0,0,0,.30);
+      -moz-box-shadow: 0px 7px 13px 0px rgba(0,0,0,.30);
+      box-shadow: 0px 7px 13px 0px rgba(0,0,0,.30);
+      & p {
+        font-size: 1.6rem;
+      }
+      &:hover {
+        background-color: $maincolor30;
+      }
+      &-info {
+        display: flex;
+        flex-direction: column;
+        &-contain {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        & h4 {
+          font-size: 1.5rem;
+          font-family: 'MyCustomFont';
+          font-weight: 700 !important;
+          color: white;
+          text-transform:capitalize;
+        }
+        &-line {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          & h5 {
+            font-size: 1.2rem !important;
+            color: white;
+          }
+          & p {
+            font-size: 1.2rem !important;
+            margin-left: .5rem;
+            color: white;
+          }
+        }
+      }
+    }
+
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url("https://picsum.photos/1920/1080?grayscale");
+    -webkit-filter: blur(5px);
+    background-repeat:no-repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: .5;
+  }
+
+}
+
+.Notification {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  font-size: 1.6rem;
+  color: black;
+  align-items: start;
+  justify-content: start;
+  text-align: center;
+  &-Item {
+    display: flex;
+    background-color: $maincolor;
+    font-size: 1.6rem;
+    margin: 1rem;
+    padding: 1rem;
+    color: white;
+    border-radius:3rem;
+    animation: opacity 1s ease;
+    transition: 1s;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.Pagination {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  &-Page {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &-CurrentPage {
+      font-size: 3rem;
+    }
+  }
+  &-Button {
+    cursor: pointer;
+    color: $maincolor !important;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem !important;
+    border-radius: 100%;
+    margin: .5rem;
+    &:hover {
+      background-color: $maincolor;
+      color: white !important;
+    }
+  }
+}
+
+@keyframes MenuButtonBottomBorder {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes MenuAfter {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+.MenuButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1.3rem !important;
+  color: $maincolor;
+  transition: .5s;
+  overflow: hidden;
+  
+  cursor: pointer;
+  &:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 32, 72, 1);
+    z-index: -1;
+    animation: MenuAfter .5s ease;
+  }
+  &:hover {
+    color: white;
+  }
+}
+.MenuButtonActive {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  background: rgba(255, 32, 72, 1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1.3rem !important;
+  color: white;
+  cursor: pointer;
+  transition: .5s;
+  &:hover {
+    background: rgba(255, 32, 72, 1);
+    color: white;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: .4rem solid rgba(255,32,72,1);
+    padding-bottom: .5rem;
+    animation: MenuButtonBottomBorder .5s ease;
+  }
+}
+
