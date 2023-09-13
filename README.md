@@ -36,11 +36,11 @@ You're allowed to use open-source packages as you see fit.
 Anything not in the description is up to you.
 
 
-![image](./gitimages/1.png)
-![image](./gitimages/2.png)
-![image](./gitimages/3.png)
-![image](./gitimages/4.png)
-![image](./gitimages/5.png)
-![image](./gitimages/6.png)
+![image](./src/gitimages/1.png)
+![image](./src/gitimages/2.png)
+![image](./src/gitimages/3.png)
+![image](./src/gitimages/4.png)
+![image](./src/gitimages/5.png)
+![image](./src/gitimages/6.png)
 
 
