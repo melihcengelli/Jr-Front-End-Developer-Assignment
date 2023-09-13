@@ -130,10 +130,7 @@ const Main = () => {
       setCountryCodeInput(e.target.value)
     }
 
-    const [button1 , setButton1] = useState<boolean>(false);
-    const [button2 , setButton2] = useState<boolean>(false);
-    const [button3 , setButton3] = useState<boolean>(false);
-
+    // Notification state is provide selected item information to client.
     const [notification,setNotification] = useState<string|null>(null);
 
     // This useEffect hook is managing Countries Data page sizes.
@@ -378,7 +375,8 @@ const Main = () => {
       console.error('GraphQL Query Error:', error);
     });
   }
-
+  
+  // handleSelect for selecting items.
   const handleSelect = (item:number,name:string) => {
     item===selected?setSelected(null):setSelected(item)
 
@@ -391,26 +389,34 @@ const Main = () => {
     }
   }
 
+  // filterData function for .filter() process.
   function filterData(x:any) {
     return x.name.includes(generalFilter);
   }
 
+  // This function sets general filter state.
   const handleGeneralFilter = (e:any) => {
     setGeneralFilterInput(e.target.value)
   }
+
+  // This function provides filter items.
   const addFilter = () => {
     setGeneralFilter(generalFilterInput);
   }
 
+  // This function clears all filters.
   const clearFilter = () => {
     setGeneralFilter("");
     setGeneralFilterInput("");
   }
 
+  // This onChange handling function sets search param.
   const handleSearch = (e:any) => {
     setSearch(e.target.value)
   }
 
+  // When client wants to search in search:tt and group:size, this function handling to seperate search param and group param.
+  // Than splits with ":" for reaching to searching param to set to general filter.
   const getSearch = () => {
     try{
       if (search.split(" ")[0].split(":")[0]==="search"){
@@ -426,6 +432,7 @@ const Main = () => {
     
   }
 
+  // When client wants to manage items length, size functions helps to client which is want to resize length of the items.
   const handleSizeSearchClear = () => {
     setSize(null);
     setSizeInput(null);
@@ -434,24 +441,24 @@ const Main = () => {
     setGeneralFilterInput("");
   }
 
+  // handleSize function sets size param into state.
   const handleSize = (x:any) => {
     setSize(x)
     
   }
+
+  // handleClearSize function clears all size params.
   const handleClearSize = () => {
     setSize(null);
     setSizeInput(0);
   }
+
+  // handleChangeSize provides size changing process to client.
   const handleChangeSize = (e:any) => {
- 
       setSizeInput(e.target.value)
-    
   }
 
-
-
-  
-
+  // When client clicks to Continents menu item, this function helps to show continents on screen.
   const mapContinents = (item:any,index:number) => {
     return (
       <>
@@ -511,6 +518,7 @@ const Main = () => {
     )
   }
 
+  // When client clicks to Languages menu item, this function helps to show languages on screen.
   const mapLanguages = (item:any,index:number) => {
     return (
       <>
@@ -590,6 +598,7 @@ const Main = () => {
     )
   }
 
+  // When client clicks to Countries menu item, this function helps to show countries on screen.
   const mapCountries = (item:any,index:number) => {
     return (
       <>
@@ -789,6 +798,7 @@ const Main = () => {
     )
   }
 
+  // This field for showing Search and Group input to client.
   const searchAndGroup = () => {
     return (
       <section className='container-inputs-line'>
@@ -796,13 +806,13 @@ const Main = () => {
         <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>Search</h5>}>
           <Button onClick={() => getSearch()}  className='container-inputs-line-button' variant="contained" ><Search fontSize='large'/></Button>
         </Tooltip>
-        <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>{button3?"Cleaning Process":"Clean"}</h5>}>
-          <Button onMouseDown={() => setButton3(true)} onMouseUp={() => setButton3(false)} onClick={() => handleSizeSearchClear()}  className='container-inputs-line-button' variant="contained" ><Delete fontSize='large' style={{transition:".5s"}}/></Button>
+        <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>Clean</h5>}>
+          <Button onClick={() => handleSizeSearchClear()}  className='container-inputs-line-button' variant="contained" ><Delete fontSize='large' style={{transition:".5s"}}/></Button>
         </Tooltip>
       </section>
     )
   }
-
+  // This field for showing size input to client.
   const sizeComp = () => {
     return (
       <section className='container-inputs-line'>
@@ -810,13 +820,14 @@ const Main = () => {
         <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>Size</h5>}>
           <Button onClick={() => handleSize(sizeInput)}  className='container-inputs-line-button' variant="contained" >Size</Button>
         </Tooltip>
-        <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>{button2?"Cleaning Process":"Clean"}</h5>}>
+        <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>Clean</h5>}>
           <Button onClick={() => handleClearSize()}  className='container-inputs-line-button' variant="contained" ><Delete fontSize='large' style={{transition:".5s"}}/></Button>
         </Tooltip>
       </section>
     )
   }
 
+  // This field for showing filter input to client.
   const filterComp = () => {
     return (
       <section className='container-inputs-line'>
@@ -824,15 +835,16 @@ const Main = () => {
         <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>Filter</h5>}>
         <Button onClick={() => addFilter()} className='container-inputs-line-button' variant="contained" ><FilterAlt fontSize='large'/></Button>
         </Tooltip>
-        <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>{button1?"Cleaning Process":"Clean"}</h5>}>
-        <Button onMouseDown={() => setButton1(true)} onMouseUp={() => setButton1(false)} onClick={() => clearFilter()} className='container-inputs-line-button' variant="contained" ><Delete fontSize='large' style={{transition:".5s"}}/></Button>
+        <Tooltip title={<h5 style={{ fontSize: "1.3rem",fontWeight:400 }}>Clean</h5>}>
+        <Button onClick={() => clearFilter()} className='container-inputs-line-button' variant="contained" ><Delete fontSize='large' style={{transition:".5s"}}/></Button>
         </Tooltip>
       </section>
     )
   }
-
+    // This field for showing filter, size, search and group input to client.
   const filterMenu = () => <>{filterComp()}{sizeComp()}{searchAndGroup()}</>
     
+  // Pagination component. 
   const paginationComp = () => {
     return (
       <>
